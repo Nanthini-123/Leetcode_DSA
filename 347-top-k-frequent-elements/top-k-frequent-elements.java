@@ -4,21 +4,30 @@ class Solution {
         for(int num:nums){
             map.put(num,map.getOrDefault(num,0)+1);
         }
-            PriorityQueue<Integer> minheap=new PriorityQueue<>((n1,n2)-> Integer.compare(map.get(n1),map.get(n2)));
+            List<Integer>[] Bucket=new List[nums.length+1];
 
-            for(int num:map.keySet()){
-                minheap.offer(num);
-                if(minheap.size()>k){
-                    minheap.poll();
+            for(int key:map.keySet()){
+                int frequency=map.get(key);
+                if(Bucket[frequency]==null){
+                    Bucket[frequency]=new ArrayList<>();
+
                 }
+                    Bucket[frequency].add(key);
+                
             }
+                int [] result=new int[k];
+                int resultindex=0;
+                for(int i=Bucket.length-1;i>=0&&resultindex<k;i--){
+                    if(Bucket[i]!=null){
+                        for(int num:Bucket[i]){
+                            result[resultindex++]=num;
+                            if(resultindex==k){
+                                return result;
+                            }
+                        }
+                    }
+                }
 
-            int[]result=new int[k];
-            for(int i=0;i<k;i++){
-                result[i]=minheap.poll();
-            }
-            return result;
-
-        
+        return result;
     }
 }

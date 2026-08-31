@@ -8,18 +8,14 @@ class Solution {
         while(left<right){
             if(height[left]<height[right]){
                 if(height[left]>leftmax){
-                leftmax=height[left];
+                    leftmax=height[left];
+                }else{
+                    totalwater+=leftmax-height[left];
                 }
-            else{
-                totalwater+=leftmax-height[left];
-                
-            }
-            left++;
+                left++;
             }else{
                 if(height[right]>rightmax){
                     rightmax=height[right];
-                    
-
                 }else{
                     totalwater+=rightmax-height[right];
                 }

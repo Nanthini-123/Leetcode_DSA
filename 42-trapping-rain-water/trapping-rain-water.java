@@ -7,21 +7,22 @@ class Solution {
         int totalwater=0;
         while(left<right){
             if(height[left]<height[right]){
-                if(height[left]>leftmax){
-                    leftmax=height[left];
-                }else{
-                    totalwater+=leftmax-height[left];
-                }
-                left++;
+            if(height[left]>leftmax){
+                leftmax=height[left];
             }else{
-                if(height[right]>rightmax){
-                    rightmax=height[right];
-                }else{
-                    totalwater+=rightmax-height[right];
-                }
-                right--;
+            totalwater+=leftmax-height[left];
             }
+            left++;
+            }else{
+            if(height[right]>rightmax){
+                rightmax=height[right];
+            }else{
+                totalwater+=rightmax-height[right];
+            }
+            right--;
         }
+        } 
         return totalwater;
+        
     }
 }

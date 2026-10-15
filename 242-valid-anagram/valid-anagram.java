@@ -3,17 +3,20 @@ class Solution {
         if(s.length()!=t.length()){
             return false;
         }
-        int charcount[] = new int[26];
+        int charCount[]=new int[26];
         for(int i=0;i<s.length();i++){
-        charcount[s.charAt(i)-'a']++;
-        charcount[t.charAt(i)-'a']--;
-
+            charCount[s.charAt(i)-'a']++;
+            charCount[t.charAt(i)-'a']--;
+             
         }
-        for(int count:charcount){
+        for(int count:charCount){
             if(count!=0){
                 return false;
             }
         }
         return true;
+
+
+        
     }
 }

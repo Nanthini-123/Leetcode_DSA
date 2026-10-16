@@ -3,19 +3,19 @@ class Solution {
         if(strs==null||strs.length==0){
             return new ArrayList<>();
         }
-        HashMap <String, List<String>> map=new HashMap<>();
+        HashMap <String,List<String>>map=new HashMap<>();
         for(String s:strs){
-            char[] charArray=s.toCharArray();
-            Arrays.sort(charArray);
+            char[] chararr=s.toCharArray();
 
-            String sortedkey=String.valueOf(charArray);
+            Arrays.sort(chararr);
+            String sorted=String.valueOf(chararr);
 
-            if(!map.containsKey(sortedkey)){
-                map.put(sortedkey, new ArrayList<>());
+            if(!map.containsKey(sorted)){
+                map.put(sorted,new ArrayList<>());
             }
-            map.get(sortedkey).add(s);
-        }
+            map.get(sorted).add(s);
 
+        }
         return new ArrayList(map.values());
 
         

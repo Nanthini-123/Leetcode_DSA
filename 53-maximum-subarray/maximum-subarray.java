@@ -5,10 +5,7 @@ class Solution {
         for(int i=1;i<nums.length;i++){
             cmax=Math.max(nums[i],cmax+nums[i]);
             gmax=Math.max(cmax,gmax);
-        
-            
         }
         return gmax;
-        
     }
 }

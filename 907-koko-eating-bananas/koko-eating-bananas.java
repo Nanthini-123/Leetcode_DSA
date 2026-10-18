@@ -3,26 +3,26 @@ class Solution {
         int left=1;
         int right=0;
         for(int pile:piles){
-            right=Math.max(right, pile);
+            right=Math.max(right,pile);
         }
-        while(left<right){
+        int result=right;
+        while(left<=right){
             int mid=left+(right-left)/2;
-            if(caneatall(piles,h,mid)){
-                right=mid;
-            }else{
-                left=mid+1;
-            }
-        }
-        return left;
+
         
-    }
-    public boolean caneatall(int[]piles, int h, int k){
-        int totalhours=0;
+        long totalhours=0;
         for(int pile:piles){
-            totalhours+=(pile+k-1)/k;
+            totalhours+=(pile+mid-1)/mid;
         }
-        return totalhours<=h;
 
-
+        if(totalhours<=h){
+            result=mid;
+            right=mid-1;
+        }else{
+            left=mid+1;
+        }
+        }
+        return result;
+        
     }
 }

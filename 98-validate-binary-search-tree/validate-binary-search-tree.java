@@ -18,17 +18,18 @@ class Solution {
         return validate(root,null,null);
         
     }
-    public boolean validate(TreeNode node,Integer min, Integer max){
+
+    public boolean validate(TreeNode node, Integer low,Integer high){
         if(node==null){
             return true;
         }
 
-        if(min!=null&&node.val<=min){
+        if(low != null && node.val <= low){
             return false;
         }
-        if(max!=null&&node.val>=max){
+        if(high != null && node.val >= high){
             return false;
         }
-        return validate(node.left,min,node.val)&&validate(node.right,node.val,max);
+        return validate(node.left,low,node.val)&&validate(node.right,node.val,high);
     }
 }

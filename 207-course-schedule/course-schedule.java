@@ -6,16 +6,16 @@ class Solution {
         for(int i=0;i<numCourses;i++){
             adj.add(new ArrayList<>());
         }
-        for(int[]pair : prerequisites){
+
+        for(int[]pair:prerequisites){
             int course=pair[0];
-            int preq=pair[1];
-            adj.get(preq).add(course);
+            int prereq=pair[1];
+            adj.get(prereq).add(course);
             indegree[course]++;
         }
-
-        Queue<Integer> queue=new LinkedList<>();
-        for(int i=0;i<numCourses;i++){
-            if(indegree[i]==0){
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
                 queue.offer(i);
             }
         }
@@ -23,16 +23,14 @@ class Solution {
         while(!queue.isEmpty()){
             int currentcourse=queue.poll();
             coursescompleted++;
-        
-            for(int nextcourse:adj.get(currentcourse)){
+            for (int nextcourse : adj.get(currentcourse)) {
                 indegree[nextcourse]--;
-                if(indegree[nextcourse]==0){
-                    queue.offer(nextcourse);
-               
-                }
-             }
+                    if (indegree[nextcourse] == 0) {
+                         queue.offer(nextcourse);
+                    }
+            }
         }
-        return coursescompleted==numCourses  ;   
-        
+        return coursescompleted==numCourses;
+
     }
 }
